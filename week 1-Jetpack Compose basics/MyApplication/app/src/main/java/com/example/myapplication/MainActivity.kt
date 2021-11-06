@@ -38,13 +38,14 @@ fun Greeting(name: String) {
     var expanded = remember {
         mutableStateOf(false)
     }
+    var extraPadding = if (expanded.value) 48.dp else 0.dp
 
     Surface(
         color = MaterialTheme.colors.primary,
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
     ) {
         Row(modifier = Modifier.padding(24.dp)) {
-            Column(modifier = Modifier.weight(1f)) {
+            Column(modifier = Modifier.weight(1f).padding(bottom = extraPadding)) {
                 Text(text = "Hello,")
                 Text(text = name)
             }
