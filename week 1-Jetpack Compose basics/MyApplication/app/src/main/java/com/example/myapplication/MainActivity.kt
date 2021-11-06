@@ -33,6 +33,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
+    var expanded = false
+
     Surface(
         color = MaterialTheme.colors.primary,
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
@@ -42,8 +44,10 @@ fun Greeting(name: String) {
                 Text(text = "Hello,")
                 Text(text = name)
             }
-            OutlinedButton(onClick = { /*TODO*/ }) {
-                Text("Show more")
+            OutlinedButton(
+                onClick = { expanded = !expanded }
+            ) {
+                Text( if (expanded) "Show less" else "Show more")
             }
         }
     }
