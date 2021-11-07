@@ -51,7 +51,7 @@ fun Greeting(name: String) {
                 .weight(1f)
                 .padding(bottom = extraPadding.coerceAtLeast(0.dp))) {
                 Text(text = "Hello,")
-                Text(text = name)
+                Text(text = name, style = MaterialTheme.typography.h4)
             }
             OutlinedButton(
                 onClick = { expanded = !expanded }
