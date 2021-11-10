@@ -3,6 +3,7 @@ package com.example.mylayout
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -38,8 +39,8 @@ fun Greeting(name: String) {
 }
 
 @Composable
-fun PhtographerCard() {
-    Row {
+fun PhtographerCard(modifier: Modifier = Modifier) {
+    Row(modifier.padding(16.dp).clickable(onClick = {})) {
         Surface(
             modifier = Modifier.size(50.dp),
             shape = CircleShape,
