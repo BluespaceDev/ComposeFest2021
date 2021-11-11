@@ -27,51 +27,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyLayoutTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
+                LayoutsCodelab()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun LayoutsCodelab() {
+    Text(text = "Hi there!")
 }
 
+@Preview
 @Composable
-fun PhtographerCard(modifier: Modifier = Modifier) {
-    Row(modifier
-        .padding(8.dp)
-        .clip(RoundedCornerShape(4.dp))
-        .clickable(onClick = {})
-        .background(MaterialTheme.colors.surface)
-        .padding(16.dp)
-    ) {
-        Surface(
-            modifier = Modifier.size(50.dp),
-            shape = CircleShape,
-            color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
-        ) {
-
-        }
-        Column(
-            modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)
-        ) {
-            Text("Alfred Sisley", fontWeight = FontWeight.Bold)
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                Text("3 minutes ago", style = MaterialTheme.typography.body2)
-            }
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
+fun LayoutsCodelabPreview() {
     MyLayoutTheme {
-        PhtographerCard()
+        LayoutsCodelab()
     }
 }
