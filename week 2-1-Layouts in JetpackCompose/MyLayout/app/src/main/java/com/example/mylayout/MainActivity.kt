@@ -35,7 +35,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LayoutsCodelab() {
-    Text(text = "Hi there!")
+    Scaffold { innerPadding ->
+        BodyContent(Modifier.padding(innerPadding))
+    }
+}
+
+@Composable
+fun BodyContent(modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        Text(text = "Hi there!")
+        Text(text = "thanks")
+    }
 }
 
 @Preview
