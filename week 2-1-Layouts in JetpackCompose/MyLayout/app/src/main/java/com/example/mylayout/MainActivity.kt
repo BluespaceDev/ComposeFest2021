@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -64,7 +66,9 @@ fun BodyContent(modifier: Modifier = Modifier) {
 
 @Composable
 fun SimpleList() {
-    Column {
+    val scrollState = rememberScrollState()
+
+    Column(Modifier.verticalScroll(scrollState)) {
         repeat(100) {
             Text("Item #$it")
         }
