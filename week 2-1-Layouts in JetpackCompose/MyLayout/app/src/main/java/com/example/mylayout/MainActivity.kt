@@ -58,8 +58,16 @@ fun LayoutsCodelab() {
 @Composable
 fun BodyContent(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
-        Text(text = "Hi there!")
-        Text(text = "thanks")
+        SimpleList()
+    }
+}
+
+@Composable
+fun SimpleList() {
+    Column {
+        repeat(100) {
+            Text("Item #$it")
+        }
     }
 }
 
