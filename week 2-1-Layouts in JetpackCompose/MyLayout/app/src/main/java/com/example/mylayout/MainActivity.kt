@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -60,7 +62,7 @@ fun LayoutsCodelab() {
 @Composable
 fun BodyContent(modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
-        SimpleList()
+        LazyList()
     }
 }
 
@@ -70,6 +72,17 @@ fun SimpleList() {
 
     Column(Modifier.verticalScroll(scrollState)) {
         repeat(100) {
+            Text("Item #$it")
+        }
+    }
+}
+
+@Composable
+fun LazyList() {
+    val scrollState = rememberLazyListState()
+
+    LazyColumn(state = scrollState) {
+        items(100) {
             Text("Item #$it")
         }
     }
