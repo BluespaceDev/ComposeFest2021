@@ -64,16 +64,31 @@ fun LayoutsCodelab() {
     }
 }
 
+val topics = listOf(
+    "Arts & Crafts", "Beauty", "Books", "Business", "Comics", "Culinary",
+    "Design", "Fashion", "Film", "History", "Maths", "Music", "People", "Philosophy",
+    "Religion", "Social sciences", "Technology", "TV", "Writing"
+)
+
 @Composable
 fun BodyContent(modifier: Modifier = Modifier) {
 //    Column(modifier = modifier) {
 //        ScrollList()
 //    }
-    MyOwnColumn(modifier.padding(8.dp)) {
-        Text("MyOwnColumn")
-        Text("places items")
-        Text("vertically.")
-        Text("We've done it by hand!")
+
+//    MyOwnColumn(modifier.padding(8.dp)) {
+//        Text("MyOwnColumn")
+//        Text("places items")
+//        Text("vertically.")
+//        Text("We've done it by hand!")
+//    }
+
+    Row(modifier = modifier.horizontalScroll(rememberScrollState())) {
+        StaggeredGrid {
+            for (topic in topics) {
+                Chip(modifier = Modifier.padding(8.dp), text = topic)
+            }
+        }
     }
 }
 
