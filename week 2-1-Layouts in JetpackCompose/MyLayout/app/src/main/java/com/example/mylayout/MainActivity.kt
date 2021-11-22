@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Black
@@ -80,7 +81,21 @@ fun BodyContent(modifier: Modifier = Modifier) {
 //        Text("We've done it by hand!")
 //    }
 
-    Row(modifier = modifier.horizontalScroll(rememberScrollState())) {
+//    Row(modifier = modifier.horizontalScroll(rememberScrollState())) {
+//        StaggeredGrid {
+//            for (topic in topics) {
+//                Chip(modifier = Modifier.padding(8.dp), text = topic)
+//            }
+//        }
+//    }
+
+    Row(
+        modifier = modifier
+            .background(color = Color.LightGray, shape = RectangleShape)
+            .padding(16.dp)
+            .size(200.dp)
+            .horizontalScroll(rememberScrollState())
+    ) {
         StaggeredGrid {
             for (topic in topics) {
                 Chip(modifier = Modifier.padding(8.dp), text = topic)
