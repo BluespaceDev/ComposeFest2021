@@ -19,6 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester.Companion.createRefs
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.RectangleShape
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.font.FontWeight.Companion.Black
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
+import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.rememberImagePainter
 import com.example.mylayout.ui.theme.MyLayoutTheme
 import kotlinx.coroutines.launch
@@ -364,5 +366,34 @@ private class PaddingModifier(
                 placeable.place(start.roundToPx(), top.roundToPx())
             }
         }
+    }
+}
+
+@Composable
+fun ConstraintLayoutContent() {
+    ConstraintLayout {
+        val (button, text) = createRefs()
+
+        Button(
+            onClick = {},
+            modifier = Modifier.constrainAs(button) {
+                top.linkTo(parent.top, margin = 16.dp)
+            }
+        ) {
+            Text("Button")
+        }
+
+        Text("Text", Modifier.constrainAs(text) {
+            top.linkTo(button.bottom, margin = 16.dp)
+            centerHorizontallyTo(parent)
+        })
+    }
+}
+
+@Preview
+@Composable
+fun ConstraintLayoutContentPreview() {
+    MyLayoutTheme {
+        ConstraintLayoutContent()
     }
 }
