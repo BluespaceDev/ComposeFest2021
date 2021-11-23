@@ -45,7 +45,7 @@ private fun TodoActivityScreen(todoViewModel: TodoViewModel) {
     val items = listOf<TodoItem>()
     TodoScreen(
         items = items,
-        onAddItem = { },
-        onRemoveItem = { }
+        onAddItem = { todoViewModel.addItem(it) },
+        onRemoveItem = { todoViewModel.removeItem(it) }
     )
 }
