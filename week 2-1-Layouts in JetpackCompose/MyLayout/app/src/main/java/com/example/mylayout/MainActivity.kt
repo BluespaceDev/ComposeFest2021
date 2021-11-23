@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Black
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.*
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import coil.compose.rememberImagePainter
 import com.example.mylayout.ui.theme.MyLayoutTheme
 import kotlinx.coroutines.launch
@@ -405,5 +406,29 @@ fun ConstraintLayoutContent() {
 fun ConstraintLayoutContentPreview() {
     MyLayoutTheme {
         ConstraintLayoutContent()
+    }
+}
+
+@Composable
+fun LargeConstraintLayout() {
+    ConstraintLayout {
+        val text = createRef()
+
+        val guideline = createGuidelineFromStart(0.5f)
+        Text(
+            "This is a very very very very very very very long text",
+            Modifier.constrainAs(text) {
+                linkTo(guideline, parent.end)
+                width = Dimension.preferredWrapContent
+            }
+        )
+    }
+}
+
+@Preview
+@Composable
+fun LargeConstraintLayoutPreview() {
+    MyLayoutTheme {
+        LargeConstraintLayout()
     }
 }
