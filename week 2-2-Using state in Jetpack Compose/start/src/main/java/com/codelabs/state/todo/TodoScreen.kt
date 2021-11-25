@@ -132,19 +132,19 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
             )
             TodoEditButton(
                 onClick = {
-                    onItemComplete(TodoItem(text))
+                    onItemComplete(TodoItem(text, icon))
+                    setIcon(TodoIcon.Default)
                     setText("")
                 },
                 text = "Add",
                 modifier = Modifier.align(Alignment.CenterVertically),
-                enabled = text.isNotBlank() // enable if text is not blank
+                enabled = text.isNotBlank()
             )
-
-            if (iconsVisible) {
-                AnimatedIconRow(icon, setIcon, Modifier.padding(top = 8.dp))
-            } else {
-                Spacer(modifier = Modifier.height(16.dp))
-            }
+        }
+        if (iconsVisible) {
+            AnimatedIconRow(icon, setIcon, Modifier.padding(top = 8.dp))
+        } else {
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }
