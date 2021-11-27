@@ -176,6 +176,20 @@ fun TodoItemInput(
     }
 }
 
+@Composable
+fun TodoItemInlineEditor(
+    item: TodoItem,
+    onEditItemChange: (TodoItem) -> Unit,
+    onEditDone: () -> Unit,
+    onRemoveItem: () -> Unit
+) = TodoItemInput(
+    text = item.task,
+    onTextChange = { onEditItemChange(item.copy(task = it)) },
+    icon = item.icon,
+    onIconChange = { onEditItemChange(item.copy(icon = it)) },
+    submit = onEditDone,
+    iconsVisible = true
+)
 
 private fun randomTint(): Float {
     return Random.nextFloat().coerceIn(0.3f, 0.9f)
