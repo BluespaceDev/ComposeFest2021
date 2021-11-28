@@ -108,6 +108,7 @@ fun Header(
     ) {
         Text(
             text = text,
+            style = MaterialTheme.typography.subtitle2,
             modifier = modifier
                 .fillMaxWidth()
                 .semantics { heading() }
