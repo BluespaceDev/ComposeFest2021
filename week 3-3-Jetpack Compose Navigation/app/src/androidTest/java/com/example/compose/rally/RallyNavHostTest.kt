@@ -2,9 +2,11 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.rally.RallyNavHost
+import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Rule
@@ -39,5 +41,17 @@ class RallyNavHostTest {
         composeTestRule
             .onNodeWithContentDescription("Accounts Screen")
             .assertIsDisplayed()
+    }
+
+    @Test
+    fun rallyNavHost_navigateToBills_viaUI() {
+        // When click on "All Bills"
+        composeTestRule.onNodeWithContentDescription("All Bills").apply {
+            performScrollTo()
+            performClick()
+        }
+        // Then the route is "Bills"
+        val route = navController.currentBackStackEntry?.destination?.route
+        assertEquals(route, "Bills")
     }
 }
