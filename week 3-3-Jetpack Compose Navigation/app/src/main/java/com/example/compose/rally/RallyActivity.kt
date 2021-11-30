@@ -29,6 +29,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -80,10 +81,18 @@ fun RallyApp() {
                     OverviewBody(
                         onClickSeeAllAccounts = { navController.navigate(RallyScreen.Accounts.name) },
                         onClickSeeAllBills = { navController.navigate(RallyScreen.Bills.name) },
+                        onAccountClick = { name ->
+                            navigateToSingleAccount(navController, name)
+                        },
                     )
                 }
                 composable(RallyScreen.Accounts.name) {
-                    AccountsBody(accounts = UserData.accounts)
+                    AccountsBody(accounts = UserData.accounts) { name ->
+                        navigateToSingleAccount(
+                            navController = navController,
+                            accountName = name
+                        )
+                    }
                 }
                 composable(RallyScreen.Bills.name) {
                     BillsBody(bills = UserData.bills)
@@ -91,4 +100,11 @@ fun RallyApp() {
             }
         }
     }
+}
+
+private fun navigateToSingleAccount(
+    navController: NavHostController,
+    accountName: String
+) {
+    navController.navigate("${RallyScreen.Accounts.name}/$accountName")
 }
