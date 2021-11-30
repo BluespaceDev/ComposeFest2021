@@ -6,6 +6,10 @@ import androidx.compose.ui.test.performScrollTo
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.rally.RallyNavHost
+import com.example.compose.rally.RallyScreen
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import org.junit.Before
@@ -53,5 +57,17 @@ class RallyNavHostTest {
         // Then the route is "Bills"
         val route = navController.currentBackStackEntry?.destination?.route
         assertEquals(route, "Bills")
+    }
+
+    @Test
+    fun rallyNavHost_navigateToAllAccounts_callingNavigate() {
+        runBlocking {
+            withContext(Dispatchers.Main) {
+                navController.navigate(RallyScreen.Accounts.name)
+            }
+        }
+        composeTestRule
+            .onNodeWithContentDescription("Accounts Screen")
+            .assertIsDisplayed()
     }
 }
