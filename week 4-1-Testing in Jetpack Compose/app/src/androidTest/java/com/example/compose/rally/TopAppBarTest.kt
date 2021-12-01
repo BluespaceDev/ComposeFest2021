@@ -12,9 +12,15 @@ class TopAppBarTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun myTest() {
+    fun rallyTopAppBarTest() {
+        val allScreens = RallyScreen.values().toList()
         composeTestRule.setContent {
-            Text("You can set any Compose content!")
+            RallyTopAppBar(
+                allScreens = allScreens,
+                onTabSelected = { },
+                currentScreen = RallyScreen.Accounts
+            )
         }
+        Thread.sleep(5000)
     }
 }
