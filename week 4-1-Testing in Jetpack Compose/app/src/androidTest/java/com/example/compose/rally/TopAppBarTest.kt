@@ -4,6 +4,7 @@ import androidx.compose.material.Text
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import com.example.compose.rally.ui.components.RallyTopAppBar
+import com.example.compose.rally.ui.overview.OverviewBody
 import org.junit.Rule
 import org.junit.Test
 
@@ -63,5 +64,16 @@ class TopAppBarTest {
             useUnmergedTree = true
             )
             .assertExists()
+    }
+
+    @Test
+    fun overviewScreen_alertsDisplayed() {
+        composeTestRule.setContent {
+            OverviewBody()
+        }
+
+        composeTestRule
+            .onNodeWithText("Alerts")
+            .assertIsDisplayed()
     }
 }
