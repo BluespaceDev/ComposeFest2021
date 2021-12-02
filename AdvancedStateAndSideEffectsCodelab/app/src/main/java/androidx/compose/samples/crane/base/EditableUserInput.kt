@@ -60,3 +60,11 @@ fun CraneEditableUserInput(
         )
     }
 }
+
+class EditableUserInputState(private val hint: String, initialText: String) {
+
+    var text by mutableStateOf(initialText)
+
+    val isHint: Boolean
+        get() = text == hint
+}
